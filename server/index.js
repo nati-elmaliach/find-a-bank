@@ -4,9 +4,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Bank = require('./models/bankModel');
 const populateDb = require('./utils/populateDb');
-
+const path = require('path');
 const app = express();
+
 app.use(cors());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../', 'client/build')));
+
 dotenv.config({ path: './config.env' });
 
 mongoose
@@ -16,12 +21,10 @@ mongoose
   .then((con) => {
     console.log('connected to db');
     populateDb();
+  }).catch(error => {
+    console.log(error);
+    console.log("Could not connect to database");
   });
-
-app.get('/', (req, res, next) => {
-  console.log('Got it');
-  res.send('Got it!');
-});
 
 app.get('/near/:lat/:lng', async (req, res, next) => {
   const { lat, lng } = req.params;
@@ -35,6 +38,12 @@ app.get('/near/:lat/:lng', async (req, res, next) => {
   res.send(banks);
 });
 
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.redirect("/")
+});
+
 app.listen(5000, () => {
-  console.log('Im up');
+  console.log('Im up on port 5000');
 });

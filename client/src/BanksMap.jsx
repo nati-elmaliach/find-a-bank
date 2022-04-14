@@ -19,7 +19,7 @@ const BanksMap = () => {
 
   const fetchCloseBanks = async () => {
     const [lat, lng] = userCoords;
-    const banks = await axios.get(`http://localhost:5000/near/${lat}/${lng}`);
+    const banks = await axios.get(`/near/${lat}/${lng}`);
     setBanks(banks.data);
   };
 
@@ -52,10 +52,10 @@ const BanksMap = () => {
   };
 
   const getBankMarker = (bank, index) => {
-    const otherProps = {}
-    const {Branch_Code} = bank
-    if(localStorage.getItem(Branch_Code)){
-      otherProps.icon =  new Icon({
+    const otherProps = {};
+    const { Branch_Code } = bank;
+    if (localStorage.getItem(Branch_Code)) {
+      otherProps.icon = new Icon({
         iconUrl:
           'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl:
@@ -64,9 +64,8 @@ const BanksMap = () => {
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
         shadowSize: [41, 41],
-      })
+      });
     }
-
 
     return (
       <Marker {...otherProps} key={index} position={bank.location.coordinates}>
@@ -75,7 +74,6 @@ const BanksMap = () => {
     );
   };
 
-  
   return (
     <MapContainer
       center={userCoords}
