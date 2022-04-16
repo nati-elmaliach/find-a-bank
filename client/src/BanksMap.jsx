@@ -4,9 +4,6 @@ import { Icon } from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
 import { getDistanceFromLatLonInKm } from './utils/helpers';
-import { dblClick } from '@testing-library/user-event/dist/click';
-
-//import 'leaflet/dist/leaflet.css';
 
 const BanksMap = () => {
   const { lng, lat } = useParams();
@@ -19,7 +16,7 @@ const BanksMap = () => {
 
   const fetchCloseBanks = async () => {
     const [lat, lng] = userCoords;
-    const banks = await axios.get(`/near/${lat}/${lng}`);
+    const banks = await axios.get(`/api/bank/near/${lat}/${lng}`);
     setBanks(banks.data);
   };
 
@@ -68,7 +65,11 @@ const BanksMap = () => {
     }
 
     return (
-      <Marker {...otherProps} key={index} position={bank.location.coordinates}>
+      <Marker
+        {...otherProps}
+        key={index}
+        position={bank.location.coordinates.reverse()}
+      >
         {getBankPopup(bank)}
       </Marker>
     );

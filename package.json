@@ -2,9 +2,9 @@
   "name": "yad2-assignment",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "cd server && npm install && node index.js",
+    "start": "cd server && npm install && node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
