@@ -1,8 +1,7 @@
 import React from 'react';
 import { UserLocation } from '../../utils/constants';
-import CoordinatesTable from '../CoordinatesTable';
-import Button from '../SharedComponents/Button';
 import Spinner from '../SharedComponents/Spinner';
+import Table from '../SharedComponents/Table';
 
 interface CoordinatesDisplayProps {
   userLocation: UserLocation;
@@ -28,7 +27,13 @@ const CoordinatesDisplay = (props: CoordinatesDisplayProps) => {
       return null;
     }
 
-    return <CoordinatesTable location={userLocation} />;
+    return (
+      <Table
+        caption='Great, Your Coordinates Are: '
+        headers={['Longitude', 'Latitude']}
+        rows={[[longitude, latitude]]}
+      />
+    );
   };
   return (
     <div
@@ -40,7 +45,6 @@ const CoordinatesDisplay = (props: CoordinatesDisplayProps) => {
       }}
     >
       {getTableView()}
-      
     </div>
   );
 };

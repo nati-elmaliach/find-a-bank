@@ -3,4 +3,6 @@ interface UserLocation {
   longitude: number;
 }
 
-export type { UserLocation };
+type arrayOf2 = [number, number];
+
+export type { UserLocation, arrayOf2 };
