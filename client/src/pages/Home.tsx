@@ -42,7 +42,7 @@ const Home = () => {
       />
       {userApprovedLocation() && (
         <Button
-          text='Step #2 Find me a bank!'
+          text='Step#2 Find me a bank!'
           onButtonClick={() => {}}
           style={{ marginTop: '1rem' }}
           navigateTo={`/banks/${userLocation.longitude}/${userLocation.latitude}`}

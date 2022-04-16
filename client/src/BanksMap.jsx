@@ -16,7 +16,13 @@ const BanksMap = () => {
 
   const fetchCloseBanks = async () => {
     const [lat, lng] = userCoords;
-    const banks = await axios.get(`/api/bank/near/${lat}/${lng}`);
+
+    let url = `/api/bank/near/${lat}/${lng}`;
+    if (process.env.NODE_ENV === 'development') {
+      url = 'http://localhost:5000' + url;
+    }
+    
+    const banks = await axios.get(url);
     setBanks(banks.data);
   };
 
