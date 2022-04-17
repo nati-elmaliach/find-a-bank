@@ -33,15 +33,16 @@ const MapBankPoint = (props: MapPointProps) => {
   };
 
   const handleSaveToFaviorite = () => {
+    setNewMarkerProps('green');
     localStorage.setItem(point.Branch_Code, 'saved');
     setIsFaivorite(true);
-    setNewMarkerProps('green');
+    
   };
 
   const handleRemoveFromFaviorite = () => {
+    setNewMarkerProps('blue');
     localStorage.removeItem(point.Branch_Code);
     setIsFaivorite(false);
-    setNewMarkerProps('blue');
   };
 
   const getButtonConfig = () => {

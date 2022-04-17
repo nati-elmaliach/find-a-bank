@@ -11,16 +11,19 @@ const app = express();
 app.use(cors());
 app.use(morgan('dev'));
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../', 'client/build')));
+
 
 // Routes
 app.use('/api/bank', banksRoutes);
 
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../', 'client/build')));
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.redirect('/');
+  res.sendFile(path.resolve(__dirname, '../', 'client/build', 'index.html'));
 });
 
 module.exports = app;

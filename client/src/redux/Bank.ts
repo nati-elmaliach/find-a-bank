@@ -1,21 +1,22 @@
-import { arrayOf2 } from "../utils/constants";
+import { arrayOf2 } from '../utils/constants';
 
 export default interface Bank {
-  Bank_Name: string,
+  Bank_Name: string;
 
-  Bank_Code: string,
+  Bank_Code: string;
 
-  Branch_Name: string,
+  Branch_Name: string;
 
-  Branch_Code: string,
+  Branch_Code: string;
 
-  Branch_Address: string,
+  Branch_Address: string;
 
-  City: string,
+  City: string;
 
-  day_closed: string,
+  day_closed: string;
 
   location: {
-    coordinates: arrayOf2, // [lng , lat]
-  },
+    coordinates: arrayOf2; // [lng , lat]
+    distanceFromUser: number;
+  };
 }

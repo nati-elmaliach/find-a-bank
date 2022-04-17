@@ -1,10 +1,10 @@
 import React from 'react';
-import { UserLocation } from '../../utils/constants';
+import { PointOnEarth } from '../../utils/constants';
 import Spinner from '../SharedComponents/Spinner';
 import Table from '../SharedComponents/Table';
 
 interface CoordinatesDisplayProps {
-  userLocation: UserLocation;
+  userLocation: PointOnEarth;
   isFetchingLocation: boolean;
   userDenied: boolean;
 }

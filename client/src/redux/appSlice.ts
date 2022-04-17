@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserLocation } from '../utils/constants';
+import { PointOnEarth } from '../utils/constants';
 import { RootState, AppThunk } from './store';
 import Bank from './Bank';
-import { reverseBankCoordinates } from '../utils/helpers';
+import { transformBanksForDisplay } from '../utils/helpers';
 
 export interface AppState {
-  userLocation: UserLocation;
+  userLocation: PointOnEarth;
   isFetchingBanks: boolean;
   banks: Bank[];
 }
@@ -22,7 +22,7 @@ export const appSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    setUserLocation: (state, action: PayloadAction<UserLocation>) => {
+    setUserLocation: (state, action: PayloadAction<PointOnEarth>) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
@@ -74,7 +74,7 @@ export const fetchBanks = (): AppThunk => async (dispatch, getState) => {
 
   try {
     let data = await axios.get<Bank[]>(url);
-    dispatch(setBanks(reverseBankCoordinates( data.data)))
+    dispatch(setBanks(transformBanksForDisplay(userLocation , data.data)))
   } catch (error) {
     console.log("Need to handle this error!");
 
