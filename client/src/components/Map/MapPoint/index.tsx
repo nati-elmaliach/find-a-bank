@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import { useSelector } from 'react-redux';
 import { selectUserCoordinates } from '../../../redux/appSlice';
@@ -16,11 +16,13 @@ interface MapPointProps {
 
 const MapBankPoint = (props: MapPointProps) => {
   const userCoords = useSelector(selectUserCoordinates);
+  const { point } = props;
+
+  const localStorageValue = localStorage.getItem(point.Branch_Code);
+  const [isFaivorite, setIsFaivorite] = useState(localStorageValue !== null);
+
   const markerRef = useRef(null);
   const popupRef = useRef(null);
-
-  const { point } = props;
-  const isFaivorite = localStorage.getItem(point.Branch_Code);
 
   const setNewMarkerProps = (color: string) => {
     //@ts-ignore
@@ -32,11 +34,13 @@ const MapBankPoint = (props: MapPointProps) => {
 
   const handleSaveToFaviorite = () => {
     localStorage.setItem(point.Branch_Code, 'saved');
+    setIsFaivorite(true);
     setNewMarkerProps('green');
   };
 
   const handleRemoveFromFaviorite = () => {
     localStorage.removeItem(point.Branch_Code);
+    setIsFaivorite(false);
     setNewMarkerProps('blue');
   };
 
