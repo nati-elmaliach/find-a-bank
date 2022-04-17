@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install 
 
+ENV DATABASE_CONNECTION=mongodb://mongo:27017/banks
+
 EXPOSE 5000
 
 CMD ["npm" , "run" , "start"]

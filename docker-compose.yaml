@@ -1,5 +1,12 @@
 version: '3'
 services:
+
+  mongo:
+      image: mongo
+      restart: always
+      ports:
+       - "27017:27017"
+
   server:
     build:
       context: ./server
@@ -10,6 +17,8 @@ services:
     volumes:
        - ./server:/usr/src/app/api
        - /usr/src/app/api/node_modules
+    depends_on:
+      - mongo
 
   client:
     build:
@@ -22,3 +31,5 @@ services:
     volumes:
        - ./client:/usr/src/app/client-app
        - /usr/src/app/client-app/node_modules
+    depends_on:
+      - server
