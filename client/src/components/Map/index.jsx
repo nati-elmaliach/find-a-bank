@@ -12,7 +12,7 @@ const Map = ({ banks }) => {
     <MapContainer
       center={userCoords}
       zoom={13}
-      style={{ height: '80vh', width: '80wh' }}
+      style={{ height: '85vh', width: '80wh' }}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

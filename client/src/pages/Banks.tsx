@@ -42,7 +42,7 @@ const Banks = () => {
     <div>
       <div
         style={{
-          height: '20vh',
+          height: '15vh',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

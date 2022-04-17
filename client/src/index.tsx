@@ -14,7 +14,9 @@ import './index.css';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 let persistor = persistStore(store);
+
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
