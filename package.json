@@ -5,9 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "cd server && npm install && node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install --legacy-peer-deps && npm run build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "16.13.1",
+    "npm": "8.1.2"
+}
 }
