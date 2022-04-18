@@ -2,7 +2,7 @@
 
 ## Deployment
 
-I've deployed the app to Heroku, here is the link `https://murmuring-basin-71542.herokuapp.com/`
+I've deployed the app to Heroku, you can access it here -> `https://murmuring-basin-71542.herokuapp.com/`
 
 ## Development
 
@@ -11,7 +11,7 @@ Use docker-compose to run the app in dev mode
 ```bash
 docker-compose up --build
 ```
-open up `http://localhost:3000` and start editing.
+open up `http://localhost:3000`
 
 ## Notes
 
