@@ -53,6 +53,8 @@ interface BanksKeysMapLiteral {
   [key: string]: number;
 }
 
+
+// Count number of occurnces in banksCountMap, maybe it is better to use Bank_Code since Bank_Name can differ?
 function getBestBankKey(banksCountMap: BanksKeysMapLiteral) {
   let max = 0;
   let bestKey = '';
