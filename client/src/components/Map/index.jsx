@@ -11,7 +11,7 @@ const Map = ({ banks }) => {
   return (
     <MapContainer
       center={userCoords}
-      zoom={13}
+      zoom={15}
       style={{ height: '85vh', width: '80wh' }}
     >
       <TileLayer
