@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import BestBankHeader from '../components/BestBankHeader';
 import Map from '../components/Map';
-import Button from '../components/SharedComponents/Button';
 import Spinner from '../components/SharedComponents/Spinner';
 import {
   fetchBanks,
@@ -38,6 +37,17 @@ const Banks = () => {
     }
     return banks.filter((bank) => bank.Bank_Name === bestBankName);
   };
+
+  const getPageHeader = () => {
+    if (isFetching) {
+      return <Spinner />;
+    }
+
+    return (
+      <BestBankHeader bankName={bestBankName} onClick={handleFilterClick} />
+    );
+  };
+
   return (
     <div>
       <div
@@ -48,11 +58,7 @@ const Banks = () => {
           alignItems: 'center',
         }}
       >
-        {isFetching && <Spinner />}
-        {banks.length && (
-          <BestBankHeader bankName={bestBankName} onClick={handleFilterClick} />
-        )}
-
+        {getPageHeader()}
         <span className='gradient-multiline'>
           *Tip: You can click on the markers to see more details about the bank{' '}
         </span>

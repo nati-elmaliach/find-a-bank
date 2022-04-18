@@ -1,4 +1,4 @@
-import { arrayOf2 } from '../utils/constants';
+import { arrayOf2 } from '../../utils/constants';
 
 export default interface Bank {
   Bank_Name: string;

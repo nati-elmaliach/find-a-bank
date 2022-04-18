@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PointOnEarth } from '../utils/constants';
 import { RootState, AppThunk } from './store';
-import Bank from './Bank';
+import Bank from './interfaces/Bank';
 import { transformBanksForDisplay } from '../utils/helpers';
 
 export interface AppState {

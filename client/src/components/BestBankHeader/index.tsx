@@ -8,11 +8,11 @@ interface BestBankHeaderProps {
 const BestBankHeader = (props: BestBankHeaderProps) => {
   return (
     <div className='gradient-multiline hover-div' onClick={props.onClick}>
-      <h4>{props.bankName}</h4>
-      <h5>This is the bank with the best branch layout!</h5>
-      <h6>
-        Click here to toggle the filter and display only those banks around you!
-      </h6>
+      <h3 style={{marginBottom: ".5rem"}}>{props.bankName}</h3>
+      <h4>This is the bank with the best branch layout.</h4>
+      <h5>
+        Click this section to toggle the filter and display only those banks around you!
+      </h5>
     </div>
   );
 };

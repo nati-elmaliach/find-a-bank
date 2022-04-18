@@ -1,5 +1,7 @@
-import Bank from '../redux/Bank';
+import Bank from '../redux/interfaces/Bank';
 import { PointOnEarth } from './constants';
+
+const DEFAULT_DISTANCE_FROM_USER = 7;
 
 export function getDistanceFromLatLonInKm(
   point1: PointOnEarth,
@@ -50,6 +52,7 @@ export function transformBanksForDisplay(
 interface BanksKeysMapLiteral {
   [key: string]: number;
 }
+
 function getBestBankKey(banksCountMap: BanksKeysMapLiteral) {
   let max = 0;
   let bestKey = '';
@@ -60,7 +63,7 @@ function getBestBankKey(banksCountMap: BanksKeysMapLiteral) {
       bestKey = key;
     }
   }
-  
+
   return bestKey;
 }
 
@@ -69,7 +72,7 @@ export function calculateBestBranchLayout(banks: Bank[]) {
 
   for (let bank of banks) {
     const { Bank_Name, location } = bank;
-    if (location.distanceFromUser <= 7) {
+    if (location.distanceFromUser <= DEFAULT_DISTANCE_FROM_USER) {
       if (banksCountMap[Bank_Name]) {
         banksCountMap[Bank_Name] = banksCountMap[Bank_Name] + 1;
       } else {
